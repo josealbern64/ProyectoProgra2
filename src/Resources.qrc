@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Resources/MonkeysSpinningMonkeys-loop.mp3</file>
+        <file>Resources/assets.svg</file>
+        <file>Resources/splash.wav</file>
+        <file>Resources/splat.wav</file>
+        <file>Resources/background.png</file>
+    </qresource>
+</RCC>
