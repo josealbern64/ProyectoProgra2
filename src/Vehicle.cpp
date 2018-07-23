@@ -19,18 +19,18 @@ Vehicle::Vehicle(QGraphicsItem* parent)
 void Vehicle::spawn(int lane)
 {
     // The vehicle spawn in the specified lane (0 being the uppermost) and moves towards the other end
-    qreal startX = -400;
-    qreal endX = 1300;
+    qreal startX = -300;
+    qreal endX = 1100;
     //to move to the other direction
-    if(lane == 1)
+    if(lane%2 ==  1)
     {
         startX = endX;
-        endX = -400;
+        endX = -300;
         setElementId(QString("vehicle%1").arg(vehicleType + 2));
     }
     QPropertyAnimation* animation = new QPropertyAnimation(this, "pos");
-    animation->setStartValue(QPointF(startX, 400 + (lane * 100)));
-    animation->setEndValue(QPointF(endX,400 + (lane * 100)));
+    animation->setStartValue(QPointF(startX,(scene()->height()/10 + (lane * scene()->height()/10))));
+    animation->setEndValue(QPointF(endX,(scene()->height()/10 + (lane * scene()->height()/10))));
     animation->setDuration(2000);
     animation->start();
     QTimer* animationTimer = new QTimer(this);

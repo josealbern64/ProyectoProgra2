@@ -39,7 +39,7 @@ int Game::run()
     // A visible rectangle of the scene
 	this->view = new QGraphicsView(this->scene);
   #if ! defined(Q_OS_ANDROID) && ! defined(Q_OS_IOS)
-    this->view->resize(900, 800);
+    this->view->resize(800, 600);
   #endif
 
     // Set a black color background or add an image as a background

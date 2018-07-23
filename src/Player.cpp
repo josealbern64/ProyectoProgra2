@@ -37,7 +37,7 @@ void Player::setInitialPos()
 {
 	// Place the player in the middle bottom of the scene
 	qreal x = (scene()->width() - boundingRect().width()) * 0.5;
-    qreal y = (scene()->height() - boundingRect().height() -25);
+    qreal y = (scene()->height() - boundingRect().height() -10);
 	setPos(x, y);
 }
 
@@ -48,23 +48,23 @@ void Player::keyPressEvent(QKeyEvent* event)
     if ( event->key() == Qt::Key_Left )
     {
         this->setElementId(QString("frogLeft"));
-        this-> move(-100,0);
+        this-> move((scene()->width()/10)*-1,0);
     }
     else if ( event->key() == Qt::Key_Right )
     {
         this->setElementId(QString("frogRight"));this->setElementId(QString("frogRight"));
-        this-> move(100,0);
+        this-> move((scene()->width()/10),0);
     }
 
     else if ( event->key() == Qt::Key_Up )
     {
         this->setElementId(QString("frogUp"));
-        this->move(0,-100);
+        this->move(0,(scene()->height()/10)*-1);
     }
     else if ( event->key() == Qt::Key_Down )
     {
         this->setElementId(QString("frogDown"));
-            this->move(0,100);
+            this->move(0,(scene()->height()/10));
     }
 
 
@@ -82,22 +82,22 @@ void Player::mousePressEvent(QGraphicsSceneMouseEvent* event)
 
 void Player::move(double changeX, double changeY)
 {
-//	setPos( pos().x() + qrand() % 10 - 5, pos().y() + qrand() % 10 - 5 );
-//	detectCollisions();
+setPos( pos().x() + changeX, pos().y() + changeY );
 
-    // Start a move animation from current starting point
-    QPropertyAnimation* animation = new QPropertyAnimation(this, "pos");
-    animation->setStartValue(QPointF(pos().x(), pos().y()));
+    //Temporarily disabled animation to fix an issue
+//    // Start a move animation from current starting point
+//    QPropertyAnimation* animation = new QPropertyAnimation(this, "pos");
+//    animation->setStartValue(QPointF(pos().x(), pos().y()));
 
-    //
-    double targetX = this->pos().x()+changeX;
-    double targetY = this->pos().y()+changeY;
-    QPointF endPos(targetX, targetY);
-    animation->setEndValue(endPos);
-    animation->setDuration(75);
+//    //
+//    double targetX = this->pos().x()+changeX;
+//    double targetY = this->pos().y()+changeY;
+//    QPointF endPos(targetX, targetY);
+//    animation->setEndValue(endPos);
+//    animation->setDuration(75);
 
-    // Start the animation
-    animation->start();
+//    // Start the animation
+//    animation->start();
 
 }
 
