@@ -17,19 +17,17 @@ Once connected, you can race each other to see who reachs the other side of the 
 
 ### Screenshot
 ##### As of 18th of july, 2018
-![Screenshot as of 18th of July, 2018](Screenshots/18-7-18.png)
+![Screenshot as of 24th of July, 2018](Screenshots/24-7-18.png)
 ### To do
 - Add
  - Network implementation
  - Selection menu
  - Help page
- - Vehicle polymorphism for the truck and car
+ - Vehicle polymorphism for the truck and car (and possibly motorbike)
  - Scoring system
-- Remove
- - The river and log implementation
- - GameTimer and the time graphic text
+ - Difficulty system
 - Fix
- - Some header and source filenames
+ - Player movement animation
 
 ### Asset Attributions
 Frog model by Tak Kenal Capek from the Noun Project

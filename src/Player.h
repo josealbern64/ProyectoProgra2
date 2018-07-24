@@ -39,6 +39,9 @@ class Player : public AnimatedObject
 	void detectCollisions();
     ///Resets the players position when it dies
 
+    signals:
+    void incScore();
+
 };
 
 #endif // PLAYER_H

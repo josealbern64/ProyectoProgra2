@@ -25,16 +25,18 @@ class Game : public QApplication
 	QGraphicsView* view;
     /// Character that controls the player
 	Player* player;
-	/// Shows the score on the screen to the player
-	Score* score;
+    /// Shows the score on the screen to the player
+    Score* score;
     /// Shows the time remaining on the screen in seconds
     GameTimer* timeRemaining;
 	/// Parsers the assets svg file
 	QSvgRenderer* svgRenderer = nullptr;
+    //current lane spawning
+    int currentLane;
+    // Timers associated for each lane
+    QTimer* timerArray[8];
 
-    QTimer* timerVehicle0;
-    QTimer* timerVehicle1;
-    QTimer* timerVehicle2;
+
 
   public:
 	/// Constructor
@@ -44,14 +46,12 @@ class Game : public QApplication
 	/// Call this method instead of exec()
 	int run();
 	/// Play the given filename as background music
-	void playBackgroundMusic(const QString& audioFilename);
+    void playBackgroundMusic(const QString& audioFilename);
 
   protected slots:
     /// Called each time a new enemy must be spawned
-    void spawnVehicle0();
-    void spawnVehicle1();
-    void spawnVehicle2();
-    void spawnLog();
+    void spawnVehicle();
+   // void increaseScore();
 };
 
 

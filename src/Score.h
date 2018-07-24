@@ -26,9 +26,8 @@ class Score : public QGraphicsTextItem
 	/// Returns a copy of the current score
 	inline int getScore() const { return score; }
 	/// Increase the score and updates the view
-	void increase(int amount = 1);
-	/// Decreases the score and updates the view
-	void decrease(int amount = 1);
+    void increaseScore(int amount = 1);
+
 
   protected:
 	/// Updates the interface to match the int attribute score

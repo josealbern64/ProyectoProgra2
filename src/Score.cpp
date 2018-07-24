@@ -17,15 +17,9 @@ Score::~Score()
 {
 }
 
-void Score::increase(int amount)
+void Score::increaseScore(int amount)
 {
 	score += amount;
-	updateScore();
-}
-
-void Score::decrease(int amount)
-{
-	score -= amount;
 	updateScore();
 }
 

@@ -6,6 +6,7 @@
 #include <QSoundEffect>
 #include <QTime>
 #include <QTimer>
+#include <QSignalMapper>
 #include <iostream>
 
 #include "Game.h"
@@ -30,6 +31,8 @@ Game::~Game()
 
 int Game::run()
 {
+    // Init current lane
+    currentLane = 0;
 	// Init the random seed
 	qsrand(QTime::currentTime().msec());
 
@@ -83,15 +86,20 @@ int Game::run()
 
     // Spawns a vehicle periodically
     //ToDo usar solo un timer
-    timerVehicle0 = new QTimer(this);
-    timerVehicle1 = new QTimer(this);
-    timerVehicle2 = new QTimer(this);
-    connect(timerVehicle0, &QTimer::timeout, this, &Game::spawnVehicle0);
+    for(int index = 0; index < 8; ++index)
+    {
+        timerArray[index] = new QTimer(this);
+        timerArray[index]->start(1000+(index * 500));
+        connect(timerArray[index], &QTimer::timeout, this, &Game::spawnVehicle);
+    }
+
+   /* connect(timerArray[0], &QTimer::timeout, this, &Game::spawnVehicle0);
     connect(timerVehicle1, &QTimer::timeout, this, &Game::spawnVehicle1);
     connect(timerVehicle2, &QTimer::timeout, this, &Game::spawnVehicle2);
     timerVehicle0->start(0);
     timerVehicle1->start(1000);
     timerVehicle2->start(2000);
+    //connect(player, &Player::incScore, this, &Score::increaseScore);*/
 
 //	// Play background music
     playBackgroundMusic("MonkeysSpinningMonkeys-loop.mp3");
@@ -121,40 +129,17 @@ void Game::playBackgroundMusic(const QString& audioFilename)
 }
 
 //ToDo hacer con solo un metodo
-void Game::spawnVehicle0()
+void Game::spawnVehicle()
 {
     Vehicle* vehicle = new Vehicle();
     vehicle->setSharedRenderer(svgRenderer);
     scene->addItem(vehicle);
-    vehicle->spawn(0);
-    timerVehicle0 -> stop();
-    timerVehicle0 -> start(500 + (qrand()%1500));
+    vehicle->spawn(currentLane%8);
+    timerArray[currentLane%8] -> stop();
+    timerArray[currentLane%8] -> start(500 + (qrand()%1500));
+    currentLane++;
 
 }
-void Game::spawnVehicle1()
-{
-    Vehicle* vehicle = new Vehicle();
-    vehicle->setSharedRenderer(svgRenderer);
-    scene->addItem(vehicle);
-    vehicle->spawn(1);
-    timerVehicle1 -> stop();
-    timerVehicle1 -> start(500 + (qrand()%1500));
 
-}
-void Game::spawnVehicle2()
-{
-    Vehicle* vehicle = new Vehicle();
-    vehicle->setSharedRenderer(svgRenderer);
-    scene->addItem(vehicle);
-    vehicle->spawn(2);
-    timerVehicle2 -> stop();
-    timerVehicle2 -> start(500 + (qrand()%1500));
 
-}
-void Game::spawnLog()
-{
-    Log* log = new Log();
-    log->setSharedRenderer(svgRenderer);
-    scene->addItem(log);
-    log->setInitialPos();
-}
+

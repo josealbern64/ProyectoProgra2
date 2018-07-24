@@ -79,10 +79,16 @@ void Player::mousePressEvent(QGraphicsSceneMouseEvent* event)
 {
 	std::cerr << "player(" << event->pos().x() << ", " << event->pos().y() << ")\n";
 }*/
-
+#include "Game.h"
 void Player::move(double changeX, double changeY)
 {
-setPos( pos().x() + changeX, pos().y() + changeY );
+    if(pos().x() + changeX > 0 && pos().x() + changeX < scene()->width()-20&&(pos().y() + changeY > 0 && pos().y() + changeY < scene()->height()))
+        setPos( pos().x() + changeX, pos().y() + changeY );
+    if(pos().y() + changeY < (scene()->height()/10)-50)
+    {
+        this->setInitialPos();
+        emit incScore();
+    }
 
     //Temporarily disabled animation to fix an issue
 //    // Start a move animation from current starting point
@@ -115,7 +121,7 @@ void Player::detectCollisions()
 			// Play the collision sound
             this->splatSound->play();
             this->setInitialPos();
-            //scene()->removeItem(obstacle);
+
 		}
 	}
 }
