@@ -9,7 +9,6 @@ class QGraphicsView;
 class Player;
 class Score;
 class Vehicle;
-class GameTimer;
 
 /**
 	Game controller. An object that represents the game.
@@ -27,8 +26,6 @@ class Game : public QApplication
 	Player* player;
     /// Shows the score on the screen to the player
     Score* score;
-    /// Shows the time remaining on the screen in seconds
-    GameTimer* timeRemaining;
 	/// Parsers the assets svg file
 	QSvgRenderer* svgRenderer = nullptr;
     //current lane spawning

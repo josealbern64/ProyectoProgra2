@@ -10,8 +10,8 @@ HEADERS += \
 	Player.h \
 	Score.h \
         Vehicle.h \
-        Log.h \
-        GameTimer.h
+    Truck.h \
+    Car.h
 
 SOURCES += \
 	main.cpp \
@@ -20,8 +20,8 @@ SOURCES += \
 	Player.cpp \
 	Score.cpp \
         Vehicle.cpp \
-        Log.cpp \
-        GameTimer.cpp
+    Truck.cpp \
+    Car.cpp
 
 RESOURCES += Resources.qrc
 

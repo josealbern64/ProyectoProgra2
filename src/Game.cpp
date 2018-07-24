@@ -12,10 +12,8 @@
 #include "Game.h"
 #include "Obstacle.h"
 #include "Vehicle.h"
-#include "Log.h"
 #include "Player.h"
 #include "Score.h"
-#include "GameTimer.h"
 
 
 Game::Game(int &argc, char **argv, int flags)
@@ -62,16 +60,6 @@ int Game::run()
     this->score = new Score(tr("Score"), 0, Qt::blue);
     this->score->setPos(5, 0);
     this->scene->addItem(this->score);
-
-    // A label to show the player's time remaining
-    this->timeRemaining = new GameTimer(120);
-    this->timeRemaining->setPos(800,0);
-    this->scene->addItem(this->timeRemaining);
-
-    //Makes the timer count down
-    QTimer* countdown = new QTimer(this);
-    connect(countdown, &QTimer::timeout, timeRemaining, &GameTimer::decrease);
-    countdown->start(1000);
 
 //	// Load the graphic resources
     this->svgRenderer = new QSvgRenderer(QString("://Resources/assets.svg"), this);
