@@ -11,7 +11,8 @@ HEADERS += \
 	Score.h \
         Vehicle.h \
     Truck.h \
-    Car.h
+    Car.h \
+    Motorbike.h
 
 SOURCES += \
 	main.cpp \
@@ -21,7 +22,8 @@ SOURCES += \
 	Score.cpp \
         Vehicle.cpp \
     Truck.cpp \
-    Car.cpp
+    Car.cpp \
+    Motorbike.cpp
 
 RESOURCES += Resources.qrc
 

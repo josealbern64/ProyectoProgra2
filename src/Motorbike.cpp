@@ -4,31 +4,30 @@
 #include <iostream>
 #include <QTimer>
 
-#include "Car.h"
+#include "Motorbike.h"
 
-Car::Car(int lane, qreal speedLevel,QGraphicsItem* parent):Vehicle(lane,speedLevel, parent)
+Motorbike::Motorbike(int lane, qreal speedLevel,QGraphicsItem* parent):Vehicle(lane,speedLevel, parent)
 {
     direction = "Right";
 }
 
-void Car::spawn()
+void Motorbike::spawn()
 {
-    //varies between vehicle types
-    qreal vehicleDuration = 4500;
-    /// The car spawn in the specified lane (0 being the uppermost) and moves towards the other end
-     /// startX and endX are relative to their dimensions and makes sure the vehicles start and end outside the view
-    qreal startX = -150;
-    qreal endX = 950;
+    qreal vehicleDuration = 3000;
+    /// The motorbike spawn in the specified lane (0 being the uppermost) and moves towards the other end
+    /// startX and endX are relative to their dimensions and makes sure the vehicles start and end outside the view
+    qreal startX = -75;
+    qreal endX = 975;
     //to move to the other direction
     if(lane%2 ==  1)
     {
         startX = endX;
-        endX = -150;
+        endX = -75;
         direction = "Left";
 
     }
     // The name of the svg element
-    setElementId(QString("car")+direction);
+    setElementId(QString("motorbike")+direction);
     QPropertyAnimation* animation = new QPropertyAnimation(this, "pos");
     animation->setStartValue(QPointF(startX,(scene()->height()/10 + (lane * scene()->height()/10))));
     animation->setEndValue(QPointF(endX,(scene()->height()/10 + (lane * scene()->height()/10))));

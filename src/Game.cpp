@@ -12,6 +12,9 @@
 #include "Game.h"
 #include "Obstacle.h"
 #include "Vehicle.h"
+#include "Truck.h"
+#include "Car.h"
+#include "Motorbike.h"
 #include "Player.h"
 #include "Score.h"
 
@@ -119,10 +122,22 @@ void Game::playBackgroundMusic(const QString& audioFilename)
 //ToDo hacer con solo un metodo
 void Game::spawnVehicle()
 {
-    Vehicle* vehicle = new Vehicle();
+     Vehicle* vehicle;
+     int type = qrand()%3;
+     switch(type)
+     {
+     case 0:
+         vehicle = new Truck(currentLane%8,score->getScore(),nullptr);
+         break;
+     case 1:
+         vehicle = new Car(currentLane%8,score->getScore(),nullptr);
+     case 2:
+         vehicle = new Motorbike(currentLane%8,score->getScore(),nullptr);
+     }
+
     vehicle->setSharedRenderer(svgRenderer);
     scene->addItem(vehicle);
-    vehicle->spawn(currentLane%8);
+    vehicle->spawn();
     timerArray[currentLane%8] -> stop();
     timerArray[currentLane%8] -> start(500 + (qrand()%1500));
     currentLane++;

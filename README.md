@@ -16,21 +16,22 @@ To play with another person, you can connect with another computer through a cli
 Once connected, you can race each other to see who reachs the other side of the screen first. When one player gets to the goal, they will be awarded a point and the game resets for both of them with a slightly harder level. This process continues until one player disconnects.
 
 ### Screenshot
-##### As of 18th of july, 2018
+##### As of 24th of july, 2018
 ![Screenshot as of 24th of July, 2018](Screenshots/24-7-18.png)
 ### To do
 - Add
  - Network implementation
  - Selection menu
  - Help page
- - Vehicle polymorphism for the truck and car (and possibly motorbike)
  - Scoring system
  - Difficulty system
 - Fix
  - Player movement animation
+ - Vehicle spawn rate relative to their speeds
 
 ### Asset Attributions
 Frog model by Tak Kenal Capek from the Noun Project
+motorbike by lipi from the Noun Project
 Car and truck models by [all-silhouettes.com](http://All-Silhouettes.com)  
 Song "Monkeys Spinning Monkeys"
 [Kevin MacLeod](incompetech.com)

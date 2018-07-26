@@ -8,15 +8,15 @@
 
 
 int vehicleType;
-Vehicle::Vehicle(QGraphicsItem* parent)
+Vehicle::Vehicle( int lane, qreal speedLevel,QGraphicsItem* parent)
     : QGraphicsSvgItem(parent)
 {
-    // The name of the svg element
-    vehicleType = qrand()%2;
-    setElementId(QString("vehicle%1").arg(vehicleType));
+    this->lane = lane;
+    this->speedLevel = speedLevel;
+
 }
 
-void Vehicle::spawn(int lane)
+/*void Vehicle::spawn()
 {
     // The vehicle spawn in the specified lane (0 being the uppermost) and moves towards the other end
     qreal startX = -300;
@@ -37,4 +37,4 @@ void Vehicle::spawn(int lane)
     connect(animationTimer, &QTimer::timeout, this, &Vehicle::deleteLater);
     animationTimer->start(2000);
 
-}
+}*/
