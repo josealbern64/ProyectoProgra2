@@ -15,12 +15,12 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="QLabel" name="label">
+    <widget class="QLabel" name="helpImage">
      <property name="text">
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap resource="Resources.qrc">:/Resources/helpScreenshot.png</pixmap>
+      <pixmap>:/Resources/helpScreenshot.png</pixmap>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -52,7 +52,7 @@
        <number>0</number>
       </property>
       <item>
-       <widget class="QTextEdit" name="textEdit">
+       <widget class="QTextEdit" name="helpText">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
           <horstretch>0</horstretch>
@@ -100,7 +100,7 @@ p, li { white-space: pre-wrap; }
     </widget>
    </item>
    <item>
-    <widget class="QDialogButtonBox" name="buttonBox">
+    <widget class="QDialogButtonBox" name="okButton">
      <property name="standardButtons">
       <set>QDialogButtonBox::Ok</set>
      </property>
@@ -108,8 +108,6 @@ p, li { white-space: pre-wrap; }
    </item>
   </layout>
  </widget>
- <resources>
-  <include location="Resources.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

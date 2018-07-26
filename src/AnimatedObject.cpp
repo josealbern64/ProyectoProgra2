@@ -11,6 +11,7 @@ AnimatedObject::AnimatedObject(QGraphicsItem* parent)
 
 AnimatedObject::~AnimatedObject()
 {
+    this->destroy(true,true);
 }
 
 void AnimatedObject::destroy(bool removeFromScene, bool deleteObject)

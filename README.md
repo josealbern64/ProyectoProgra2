@@ -19,12 +19,10 @@ Once connected, you can race each other to see who reachs the other side of the 
 ##### As of 24th of july, 2018
 ![Screenshot as of 24th of July, 2018](Screenshots/24-7-18.png)
 ### To do
-- Add
+- Add:
  - Network implementation
- - Selection menu
- - Help page
 
-- Fix
+- Fix:
  - Player movement animation
 
 ### Asset Attributions
@@ -34,3 +32,4 @@ Car and truck models by [all-silhouettes.com](http://All-Silhouettes.com)
 Song "Monkeys Spinning Monkeys"
 [Kevin MacLeod](incompetech.com)
 Licensed under [Creative Commons: By Attribution 3.0](http://creativecommons.org/licenses/by/3.0/)
+"MultiFrogger" text logo created in [FlamingText](http://flamingtext.com)

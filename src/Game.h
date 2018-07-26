@@ -41,7 +41,7 @@ class Game : public QApplication
 
   public:
 	/// Constructor
-	Game(int &argc, char **argv, int flags = ApplicationFlags);
+    Game(int &argc, char **argv );
 	/// Destructor
 	~Game();
 	/// Call this method instead of exec()

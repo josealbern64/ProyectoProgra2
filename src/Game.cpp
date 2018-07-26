@@ -19,8 +19,8 @@
 #include "Score.h"
 
 
-Game::Game(int &argc, char **argv, int flags)
-	: QApplication(argc, argv, flags)
+Game::Game(int &argc, char **argv)
+    : QApplication(argc, argv)
 {
 }
 
