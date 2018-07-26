@@ -3,7 +3,7 @@
 #include <QPropertyAnimation>
 #include <iostream>
 #include <QTimer>
-
+#include <math.h>
 #include "Motorbike.h"
 
 Motorbike::Motorbike(int lane, qreal speedLevel,QGraphicsItem* parent):Vehicle(lane,speedLevel, parent)

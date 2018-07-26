@@ -8,6 +8,7 @@
 #include <QTimer>
 #include <QSignalMapper>
 #include <iostream>
+#include <math.h>
 
 #include "Game.h"
 #include "Obstacle.h"

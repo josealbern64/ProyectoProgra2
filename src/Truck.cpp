@@ -3,6 +3,7 @@
 #include <QPropertyAnimation>
 #include <iostream>
 #include <QTimer>
+#include <math.h>
 
 #include "Truck.h"
 
