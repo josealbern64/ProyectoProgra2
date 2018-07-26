@@ -33,7 +33,7 @@ void Motorbike::spawn()
     animation->setEndValue(QPointF(endX,(scene()->height()/10 + (lane * scene()->height()/10))));
     //vehicles travel 5% faster each time the player scores
 
-    qreal difficulty = vehicleDuration-(speedLevel*(vehicleDuration/20));
+    qreal difficulty = vehicleDuration*(pow(0.95,speedLevel));
     if(difficulty > 0)
         animation->setDuration(difficulty);
     animation->start();

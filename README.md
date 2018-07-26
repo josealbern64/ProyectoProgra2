@@ -23,11 +23,9 @@ Once connected, you can race each other to see who reachs the other side of the 
  - Network implementation
  - Selection menu
  - Help page
- - Scoring system
- - Difficulty system
+
 - Fix
  - Player movement animation
- - Vehicle spawn rate relative to their speeds
 
 ### Asset Attributions
 Frog model by Tak Kenal Capek from the Noun Project

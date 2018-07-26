@@ -6,11 +6,15 @@
 #include <QTimer>
 #include <QSoundEffect>
 #include <QtMath>
-
+#include <iostream>
 #include "Player.h"
+
+
+ void Player::setAlive(bool state){alive = state;}
 
 Player::Player()
 {
+
 	// Set graphic image
     //setElementId( QString("monster%1").arg( qrand() % 3 ) );
     setElementId(QString("frogUp"));
@@ -31,6 +35,7 @@ Player::Player()
 
 Player::~Player()
 {
+    splatSound = nullptr;
 }
 
 void Player::setInitialPos()
@@ -67,44 +72,21 @@ void Player::keyPressEvent(QKeyEvent* event)
             this->move(0,(scene()->height()/10));
     }
 
-
-    // Do something if the spacebar is pressed
-//	else if ( event->key() == Qt::Key_Space )
-//		doSomething();
-
 }
-
-/*#include <iostream>
-void Player::mousePressEvent(QGraphicsSceneMouseEvent* event)
-{
-	std::cerr << "player(" << event->pos().x() << ", " << event->pos().y() << ")\n";
-}*/
 #include "Game.h"
 void Player::move(double changeX, double changeY)
 {
-    if(pos().x() + changeX > 0 && pos().x() + changeX < scene()->width()-20&&(pos().y() + changeY > 0 && pos().y() + changeY < scene()->height()))
-        setPos( pos().x() + changeX, pos().y() + changeY );
-    if(pos().y() + changeY < (scene()->height()/10)-50)
+    if(alive)
     {
-        this->setInitialPos();
-        emit incScore();
+        if(pos().x() + changeX > 0 && pos().x() + changeX < scene()->width()-20&&(pos().y() + changeY > 0 && pos().y() + changeY < scene()->height()))
+            setPos( pos().x() + changeX, pos().y() + changeY );
+        if(pos().y() + changeY < (scene()->height()/10)-50)
+        {
+            this->setInitialPos();
+            emit reachedGoal();
+
+        }
     }
-
-    //Temporarily disabled animation to fix an issue
-//    // Start a move animation from current starting point
-//    QPropertyAnimation* animation = new QPropertyAnimation(this, "pos");
-//    animation->setStartValue(QPointF(pos().x(), pos().y()));
-
-//    //
-//    double targetX = this->pos().x()+changeX;
-//    double targetY = this->pos().y()+changeY;
-//    QPointF endPos(targetX, targetY);
-//    animation->setEndValue(endPos);
-//    animation->setDuration(75);
-
-//    // Start the animation
-//    animation->start();
-
 }
 
 #include "Vehicle.h"
@@ -121,7 +103,9 @@ void Player::detectCollisions()
 			// Play the collision sound
             this->splatSound->play();
             this->setInitialPos();
+            emit died() ;
 
 		}
 	}
 }
+

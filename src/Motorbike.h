@@ -8,7 +8,7 @@ class Motorbike : public Vehicle
   public:
     ///constructor
     Motorbike(int lane = 0, qreal speedLevel = 0,QGraphicsItem* parent = nullptr);
-    /// Creates a truck and that travels through the specified lane
+    /// Creates a motorbike that travels through the specified lane
     virtual void spawn() override;
 };
 

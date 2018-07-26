@@ -34,6 +34,8 @@ int Game::run()
 {
     // Init current lane
     currentLane = 0;
+    // Init spawn rate of the vehicles
+    spawnRate = 5000;
 	// Init the random seed
 	qsrand(QTime::currentTime().msec());
 
@@ -76,21 +78,19 @@ int Game::run()
     this->player->setFocus();
 
     // Spawns a vehicle periodically
-    //ToDo usar solo un timer
     for(int index = 0; index < 8; ++index)
     {
         timerArray[index] = new QTimer(this);
-        timerArray[index]->start(1000+(index * 500));
+
+        // Initial spawn of the vehicles
+        timerArray[index]->start(1000+(500*index));
         connect(timerArray[index], &QTimer::timeout, this, &Game::spawnVehicle);
+
     }
 
-   /* connect(timerArray[0], &QTimer::timeout, this, &Game::spawnVehicle0);
-    connect(timerVehicle1, &QTimer::timeout, this, &Game::spawnVehicle1);
-    connect(timerVehicle2, &QTimer::timeout, this, &Game::spawnVehicle2);
-    timerVehicle0->start(0);
-    timerVehicle1->start(1000);
-    timerVehicle2->start(2000);
-    //connect(player, &Player::incScore, this, &Score::increaseScore);*/
+    // Allow the game to know when the player has reached the goal
+    connect(player, &Player::reachedGoal, score, &Score::increaseScore);
+    connect(player, &Player::died, this, &Game::deathTimePenalty);
 
 //	// Play background music
     playBackgroundMusic("MonkeysSpinningMonkeys-loop.mp3");
@@ -119,7 +119,6 @@ void Game::playBackgroundMusic(const QString& audioFilename)
 	mediaPlayer->play();
 }
 
-//ToDo hacer con solo un metodo
 void Game::spawnVehicle()
 {
      Vehicle* vehicle;
@@ -131,17 +130,37 @@ void Game::spawnVehicle()
          break;
      case 1:
          vehicle = new Car(currentLane%8,score->getScore(),nullptr);
+         break;
      case 2:
          vehicle = new Motorbike(currentLane%8,score->getScore(),nullptr);
+         break;
      }
 
     vehicle->setSharedRenderer(svgRenderer);
     scene->addItem(vehicle);
     vehicle->spawn();
-    timerArray[currentLane%8] -> stop();
-    timerArray[currentLane%8] -> start(500 + (qrand()%1500));
+    // Spawn rate of the vehicles in one lane increase by 10% every time the player scores
+    timerArray[currentLane%8]->stop();
+    timerArray[currentLane%8]->start((spawnRate*(pow(0.90,score->getScore()))));
     currentLane++;
 
+}
+
+void  Game::deathTimePenalty()
+{
+    this->player->setAlive(false);
+    this->player->hide();
+    QTimer* penalty = new QTimer(this);
+    connect(penalty, &QTimer::timeout,this, &Game::revivePlayer  );
+    //2 seconds death time penalty
+    penalty->start(2000);
+
+}
+void Game::revivePlayer()
+{
+    this->player->show();
+    this->player->setFocus();
+    this->player->setAlive(true);
 }
 
 

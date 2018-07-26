@@ -15,8 +15,8 @@ class Score : public QGraphicsTextItem
   protected:
 	/// This scores measures something: health, power, bonus, points...
 	QString legend;
-	/// The amount scored
-	int score;
+    /// The amount scored, which also acts as game difficulty; the higher the score the faster the vehicles and their spawn rate
+    size_t score;
 
   public:
 	/// Constructor
@@ -24,14 +24,17 @@ class Score : public QGraphicsTextItem
 	/// Destructor
 	~Score();
 	/// Returns a copy of the current score
-	inline int getScore() const { return score; }
+    inline int getScore() const { return score; }
 	/// Increase the score and updates the view
-    void increaseScore(int amount = 1);
+
 
 
   protected:
 	/// Updates the interface to match the int attribute score
 	void updateScore();
+
+  public slots:
+     void increaseScore();
 };
 
 #endif // SCORE_H

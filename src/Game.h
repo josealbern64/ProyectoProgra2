@@ -32,6 +32,8 @@ class Game : public QApplication
     int currentLane;
     // Timers associated for each lane
     QTimer* timerArray[8];
+    // Spawnrate of the vehicles
+    qreal spawnRate;
 
 
 
@@ -46,9 +48,12 @@ class Game : public QApplication
     void playBackgroundMusic(const QString& audioFilename);
 
   protected slots:
-    /// Called each time a new enemy must be spawned
+    /// Called each time a new vehicle must be spawned
     void spawnVehicle();
-   // void increaseScore();
+    /// Called when the player dies
+    void deathTimePenalty();
+    /// Called when the death time penalty has passed
+    void revivePlayer();
 };
 
 
