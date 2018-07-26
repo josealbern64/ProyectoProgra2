@@ -150,14 +150,15 @@ void  Game::deathTimePenalty()
 {
     this->player->setAlive(false);
     this->player->hide();
-    QTimer* penalty = new QTimer(this);
-    connect(penalty, &QTimer::timeout,this, &Game::revivePlayer  );
-    //2 seconds death time penalty
-    penalty->start(2000);
+    penalty = new QTimer(this);
+    this->connect(penalty, &QTimer::timeout,this, &Game::revivePlayer  );
+    //3 seconds death time penalty
+    this->penalty->start(3000);
 
 }
 void Game::revivePlayer()
 {
+    this->penalty->stop();
     this->player->show();
     this->player->setFocus();
     this->player->setAlive(true);

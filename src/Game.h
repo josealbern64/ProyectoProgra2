@@ -34,6 +34,8 @@ class Game : public QApplication
     QTimer* timerArray[8];
     // Spawnrate of the vehicles
     qreal spawnRate;
+    // time penalty
+    QTimer* penalty;
 
 
 

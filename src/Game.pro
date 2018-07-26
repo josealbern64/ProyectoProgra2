@@ -12,7 +12,10 @@ HEADERS += \
         Vehicle.h \
     Truck.h \
     Car.h \
-    Motorbike.h
+    Motorbike.h \
+    Help.h \
+    Menu.h \
+    ConnectDialog.h
 
 SOURCES += \
 	main.cpp \
@@ -23,7 +26,10 @@ SOURCES += \
         Vehicle.cpp \
     Truck.cpp \
     Car.cpp \
-    Motorbike.cpp
+    Motorbike.cpp \
+    Help.cpp \
+    Menu.cpp \
+    ConnectDialog.cpp
 
 RESOURCES += Resources.qrc
 
@@ -32,5 +38,10 @@ mac {
 	Resources.path = Contents/MacOS
 	QMAKE_BUNDLE_DATA += Resources
 }
+
+FORMS += \
+    Help.ui \
+    Menu.ui \
+    ConnectDialog.ui
 
 
